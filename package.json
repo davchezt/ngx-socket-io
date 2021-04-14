@@ -1,5 +1,5 @@
 {
-  "name": "ngx-socket-io-ovveride",
+  "name": "ngx-socket-io-override",
   "version": "4.0.0",
   "description": "Socket.IO module for Angular",
   "main": "index.ts",
