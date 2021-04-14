@@ -17,7 +17,7 @@ export class WrappedSocket {
         }
     };
 
-    constructor(protected config: SocketIoConfig) {
+    constructor(private config: SocketIoConfig) {
         if (config === undefined) {
             config = this.emptyConfig;
         }
@@ -41,7 +41,7 @@ export class WrappedSocket {
 
     connect(config?:SocketIoConfig) {
         if (config) {
-            return this.ioSocket.connect(config);
+            return this.ioSocket.connect(config.url, config.options);
         }
 
         return this.ioSocket.connect();
