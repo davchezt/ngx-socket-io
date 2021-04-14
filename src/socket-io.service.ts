@@ -12,10 +12,12 @@ export class WrappedSocket {
     ioSocket: any;
     emptyConfig: SocketIoConfig = {
         url: '',
-        options: {}
+        options: {
+            query: {}
+        }
     };
 
-    constructor(private config: SocketIoConfig) {
+    constructor(protected config: SocketIoConfig) {
         if (config === undefined) {
             config = this.emptyConfig;
         }
@@ -37,7 +39,11 @@ export class WrappedSocket {
         this.ioSocket.once(eventName, callback);
     }
 
-    connect() {
+    connect(config?:SocketIoConfig) {
+        if (config) {
+            return this.ioSocket.connect(config);
+        }
+
         return this.ioSocket.connect();
     }
 
